@@ -35,7 +35,7 @@ class Template extends \yii\db\ActiveRecord
             [['category_id'], 'integer'],
             [['price'], 'number'],
             [['name'], 'string', 'max' => 255],
-            [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => ProductionCategory::className(), 'targetAttribute' => ['category_id' => 'id']],
+            [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
     }
 
