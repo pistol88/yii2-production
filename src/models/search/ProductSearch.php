@@ -4,12 +4,12 @@ namespace dvizh\production\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use dvizh\production\models\Category;
+use dvizh\production\models\Product;
 
 /**
- * CategorySearch represents the model behind the search form about `dvizh\production\models\Category`.
+ * ProductSearch represents the model behind the search form about `dvizh\production\models\Product`.
  */
-class CategorySearch extends Category
+class ProductSearch extends Product
 {
     /**
      * @inheritdoc
@@ -40,7 +40,7 @@ class CategorySearch extends Category
      */
     public function search($params)
     {
-        $query = Category::find();
+        $query = Product::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

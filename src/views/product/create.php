@@ -1,8 +1,8 @@
 <?php
 use yii\helpers\Html;
 
-$this->title = 'Создать шаблон';
-$this->params['breadcrumbs'][] = ['label' => 'Шаблоны', 'url' => ['index']];
+$this->title = 'Создать продукт';
+$this->params['breadcrumbs'][] = ['label' => 'Продукты', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \dvizh\shop\assets\BackendAsset::register($this);
 ?>

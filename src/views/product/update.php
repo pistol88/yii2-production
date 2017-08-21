@@ -1,8 +1,8 @@
 <?php
 use yii\helpers\Html;
 
-$this->title = 'Обновить шаблон: ' . ' ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Шаблоны', 'url' => ['index']];
+$this->title = 'Обновить продукт: ' . ' ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Продукты', 'url' => ['index']];
 $this->params['breadcrumbs'][] = 'Обновить';
 \dvizh\shop\assets\BackendAsset::register($this);
 ?>

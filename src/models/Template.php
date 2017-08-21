@@ -32,9 +32,9 @@ class Template extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['category_id'], 'integer'],
+            [['category_id', 'model_id'], 'integer'],
             [['price'], 'number'],
-            [['name'], 'string', 'max' => 255],
+            [['name', 'model_name'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
     }
@@ -48,6 +48,8 @@ class Template extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Название',
             'category_id' => 'Категория',
+            'model_id' => 'Объект',
+            'model_name' => 'Объект',
             'price' => 'Цена',
         ];
     }

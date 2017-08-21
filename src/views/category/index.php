@@ -6,7 +6,7 @@ use dvizh\production\models\Category;
 use kartik\grid\GridView;
 
 $this->title = 'Категории';
-$this->params['breadcrumbs'][] = ['label' => 'Производство', 'url' => ['/default/index']];
+$this->params['breadcrumbs'][] = ['label' => 'Производство', 'url' => ['default/index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 \dvizh\shop\assets\BackendAsset::register($this);

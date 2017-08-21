@@ -3,14 +3,14 @@
 namespace dvizh\production\controllers;
 
 use Yii;
-use dvizh\production\models\Template;
-use dvizh\production\models\search\TemplateSearch;
+use dvizh\production\models\Product;
+use dvizh\production\models\search\ProductSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
-class TemplateController extends Controller
+class ProductController extends Controller
 {
     public function behaviors()
     {
@@ -36,7 +36,7 @@ class TemplateController extends Controller
 
     public function actionIndex()
     {
-        $searchModel = new TemplateSearch();
+        $searchModel = new ProductSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -47,7 +47,7 @@ class TemplateController extends Controller
 
     public function actionCreate()
     {
-        $model = new Template;
+        $model = new Product;
 
         $model->model_name = $this->module->productionModel;
         
@@ -84,7 +84,7 @@ class TemplateController extends Controller
 
     protected function findModel($id)
     {
-        $model = new Template;
+        $model = new Product;
         
         if (($model = $model::findOne($id)) !== null) {
             return $model;
@@ -95,7 +95,7 @@ class TemplateController extends Controller
     
     protected function findModelBySlug($slug)
     {
-        $model = new Template;
+        $model = new Product;
         
         if (($model = $model::findOne(['slug' => $slug])) !== null) {
             return $model;

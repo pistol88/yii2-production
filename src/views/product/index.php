@@ -5,7 +5,7 @@ use yii\helpers\Url;
 use dvizh\production\models\Category;
 use kartik\grid\GridView;
 
-$this->title = 'Шаблоны';
+$this->title = 'Продукты';
 $this->params['breadcrumbs'][] = ['label' => 'Производство', 'url' => ['default/index']];
 $this->params['breadcrumbs'][] = $this->title;
 
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     
     <div class="row">
         <div class="col-md-2">
-            <?= Html::a('Создать шаблон', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('Создать продукт', ['create'], ['class' => 'btn btn-success']) ?>
         </div>
         <div class="col-md-4">
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace dvizh\pageion\controllers;
+namespace dvizh\production\controllers;
 
 use Yii;
-use dvizh\pageion\models\Category;
-use dvizh\pageion\models\search\CategorySearch;
+use dvizh\production\models\Category;
+use dvizh\production\models\search\CategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

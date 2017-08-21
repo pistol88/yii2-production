@@ -3,6 +3,7 @@
 namespace dvizh\production\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "production_product".
@@ -16,16 +17,22 @@ use Yii;
  * @property string $price
  * @property string $model_name
  * @property int $model_id
- * @property int $amount
  * @property int $template_id
  * @property int $created_at
  * @property int $updated_at
  *
- * @property ProductionCategory $category
+ * @property Category $category
  * @property ProductionProductElement[] $productionProductElements
  */
 class Product extends \yii\db\ActiveRecord
 {
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
+    }
+    
     /**
      * @inheritdoc
      */
@@ -40,11 +47,11 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'category_id', 'status', 'model_id', 'amount', 'template_id', 'created_at', 'updated_at'], 'integer'],
+            [['name', 'category_id', 'status', 'model_id', 'template_id', 'created_at', 'updated_at'], 'integer'],
             [['price'], 'number'],
             [['model_name', 'model_id', 'template_id'], 'required'],
             [['sku', 'code', 'model_name'], 'string', 'max' => 255],
-            [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => ProductionCategory::className(), 'targetAttribute' => ['category_id' => 'id']],
+            [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
     }
 
@@ -58,12 +65,11 @@ class Product extends \yii\db\ActiveRecord
             'name' => 'Название',
             'category_id' => 'Категория',
             'status' => 'Статус',
-            'sku' => 'Код',
-            'code' => 'Код',
+            'sku' => 'Код внешний',
+            'code' => 'Код внутренний',
             'price' => 'Цена',
             'model_name' => 'Объект',
-            'model_id' => 'ID объекта',
-            'amount' => 'Количество',
+            'model_id' => 'Объект',
             'template_id' => 'Шаблон',
             'created_at' => 'Создано',
             'updated_at' => 'Обновлено',
@@ -75,14 +81,14 @@ class Product extends \yii\db\ActiveRecord
      */
     public function getCategory()
     {
-        return $this->hasOne(ProductionCategory::className(), ['id' => 'category_id']);
+        return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getProductionProductElements()
+    public function getElements()
     {
-        return $this->hasMany(ProductionProductElement::className(), ['production_id' => 'id']);
+        return $this->hasMany(ProductElement::className(), ['production_id' => 'id']);
     }
 }

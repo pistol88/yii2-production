@@ -26,6 +26,8 @@ class m170805_121022_initial_db extends Migration
                 'id' => Schema::TYPE_PK,
                 'name' => $this->string()->notNull(),
                 'category_id' => $this->integer(),
+                'model_name' => $this->string()->notNull(),
+                'model_id' => $this->integer()->notNull(),
                 'price' => $this->decimal(11, 2),
             ],
             $tableOptions
@@ -54,7 +56,6 @@ class m170805_121022_initial_db extends Migration
                 'price' => $this->decimal(11, 2),
                 'model_name' => $this->string()->notNull(),
                 'model_id' => $this->integer()->notNull(),
-                'amount' => $this->integer(),
                 'template_id' => $this->integer()->notNull(),
                 'created_at' => $this->integer(),
                 'updated_at' => $this->integer()
