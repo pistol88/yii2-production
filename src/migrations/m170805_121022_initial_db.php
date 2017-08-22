@@ -37,9 +37,11 @@ class m170805_121022_initial_db extends Migration
                 'id' => Schema::TYPE_PK,
                 'name' => $this->string()->notNull(),
                 'category_id' => $this->integer(),
-                'model_name' => $this->string()->notNull(),
-                'model_id' => $this->integer()->notNull(),
+                'model_name' => $this->string(),
+                'model_id' => $this->integer(),
                 'price' => $this->decimal(11, 2),
+                'sku' => $this->string(),
+                'code' => $this->string(),
             ],
             $tableOptions
         );
@@ -49,7 +51,8 @@ class m170805_121022_initial_db extends Migration
             [
                 'id' => Schema::TYPE_PK,
                 'name' => $this->string()->notNull(),
-                'template_id' => $this->integer(),
+                'template_id' => $this->integer()->notNull(),
+                'component_id' => $this->integer()->notNull(),
                 'amount' => $this->integer(),
             ],
             $tableOptions
@@ -65,8 +68,9 @@ class m170805_121022_initial_db extends Migration
                 'sku' => $this->string(),
                 'code' => $this->string(),
                 'price' => $this->decimal(11, 2),
-                'model_name' => $this->string()->notNull(),
-                'model_id' => $this->integer()->notNull(),
+                'model_name' => $this->string(),
+                'model_id' => $this->integer(),
+                'component_id' => $this->integer(),
                 'template_id' => $this->integer()->notNull(),
                 'created_at' => $this->integer(),
                 'updated_at' => $this->integer()
@@ -78,18 +82,19 @@ class m170805_121022_initial_db extends Migration
             '{{%production_product_element}}',
             [
                 'id' => Schema::TYPE_PK,
-                'name' => $this->integer(),
+                'name' => $this->string(),
+                'component_id' => $this->integer(),
                 'price' => $this->decimal(11, 2),
-                'model_name' => $this->string()->notNull(),
-                'model_id' => $this->integer()->notNull(),
+                'model_name' => $this->string(),
+                'model_id' => $this->integer(),
                 'amount' => $this->integer(),
-                'production_id' => $this->integer()->notNull(),
+                'product_id' => $this->integer()->notNull(),
             ],
             $tableOptions
         );
         
         $this->addForeignKey(
-            'elem_to_prod', '{{%production_product_element}}', 'production_id', '{{%production_product}}', 'id', 'CASCADE', 'CASCADE'
+            'elem_to_prod', '{{%production_product_element}}', 'product_id', '{{%production_product}}', 'id', 'CASCADE', 'CASCADE'
         );
         
         $this->addForeignKey(

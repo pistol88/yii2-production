@@ -30,9 +30,18 @@ php yii migrate --migrationPath=vendor/dvizh/yii2-production/src/migrations
 
 Подключение и настройка
 ---------------------------------
-В конфигурационный файл приложения добавить модуль production
+В конфигурационный файл приложения добавить компонент production
 
-И модуль (если хотите использовать виджеты)
+```php
+    'components' => [
+        'production' => [
+            'class' => 'dvizh\production\Production',
+        ],
+        //...
+    ]
+```
+
+И модуль
 
 ```php
     'modules' => [

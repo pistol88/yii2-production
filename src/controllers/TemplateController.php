@@ -51,6 +51,13 @@ class TemplateController extends Controller
         $model->model_name = $this->module->productionModel;
         
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            
+            if($componentAmounts = yii::$app->request->post('counts')) {
+                foreach($componentAmounts as $componentId => $count) {
+                    $model->setComponentAmount($componentId, $count);
+                }
+            }
+            
             return $this->redirect(['update', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -65,6 +72,13 @@ class TemplateController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            
+            if($componentAmounts = yii::$app->request->post('counts')) {
+                foreach($componentAmounts as $componentId => $count) {
+                    $model->setComponentAmount($componentId, $count);
+                }
+            }
+            
             return $this->redirect(['update', 'id' => $model->id]);
         } else {
             return $this->render('update', [

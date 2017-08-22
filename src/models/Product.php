@@ -71,7 +71,7 @@ class Product extends \yii\db\ActiveRecord
             'model_name' => 'Объект',
             'model_id' => 'Объект',
             'template_id' => 'Шаблон',
-            'created_at' => 'Создано',
+            'created_at' => 'Произведено',
             'updated_at' => 'Обновлено',
         ];
     }

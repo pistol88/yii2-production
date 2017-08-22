@@ -31,7 +31,7 @@ class TemplateElement extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['template_id', 'amount'], 'integer'],
+            [['template_id', 'amount', 'component_id'], 'integer'],
             [['name'], 'string', 'max' => 255],
             [['template_id'], 'exist', 'skipOnError' => true, 'targetClass' => Template::className(), 'targetAttribute' => ['template_id' => 'id']],
         ];
@@ -47,6 +47,7 @@ class TemplateElement extends \yii\db\ActiveRecord
             'name' => 'Название',
             'template_id' => 'Шаблон',
             'amount' => 'Необходимое количество',
+            'component_id' => 'Компонент',
         ];
     }
 
@@ -56,5 +57,13 @@ class TemplateElement extends \yii\db\ActiveRecord
     public function getTemplate()
     {
         return $this->hasOne(Template::className(), ['id' => 'template_id']);
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getComponent()
+    {
+        return $this->hasOne(Component::className(), ['id' => 'component_id']);
     }
 }

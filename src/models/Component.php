@@ -48,4 +48,16 @@ class Component extends \yii\db\ActiveRecord
             'amount' => 'Остаток',
         ];
     }
+    
+    public function minusAmount($amount)
+    {
+        $this->amount = $this->amount-$amount;
+        return $this->save(false);
+    }
+    
+    public function plusAmount($amount)
+    {
+        $this->amount = $this->amount+$amount;
+        return $this->save(false);
+    }
 }

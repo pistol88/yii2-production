@@ -32,6 +32,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'category.name',
             'price',
+            [
+                'attribute' => 'created_at',
+                'content' => function($model) {
+                    return date('d.m.Y H:i:s', $model->created_at);
+                }
+            ],
             ['class' => 'yii\grid\ActionColumn', 'template' => '{update} {delete}']
         ],
     ]); ?>

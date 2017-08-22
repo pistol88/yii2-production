@@ -33,9 +33,9 @@ class ProductElement extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'model_id', 'amount', 'production_id'], 'integer'],
+            [['name', 'model_id', 'amount', 'production_id', 'component_id'], 'integer'],
             [['price'], 'number'],
-            [['model_name', 'model_id', 'production_id'], 'required'],
+            [['product_id'], 'required'],
             [['model_name'], 'string', 'max' => 255],
             [['production_id'], 'exist', 'skipOnError' => true, 'targetClass' => ProductionProduct::className(), 'targetAttribute' => ['production_id' => 'id']],
         ];
@@ -52,8 +52,9 @@ class ProductElement extends \yii\db\ActiveRecord
             'price' => 'Цена',
             'model_name' => 'Объект',
             'model_id' => 'ID объекта',
+            'component_id' => 'Компонент',
             'amount' => 'Количество',
-            'production_id' => 'Продукт',
+            'product_id' => 'Продукт',
         ];
     }
 

@@ -3,6 +3,7 @@ use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 use dvizh\production\models\Category;
+use dvizh\production\models\Component;
 use kartik\select2\Select2;
 
 $productionModel = new $module->productionModel;
@@ -19,12 +20,37 @@ $products = $productionModel::find()->all();
             ->widget(Select2::classname(), [
             'data' => ArrayHelper::map(Category::find()->all(), 'id', 'name'),
             'language' => 'ru',
-            'options' => ['placeholder' => 'Выберите категорию ...'],
+            'options' => ['placeholder' => 'Выберите объект ...'],
             'pluginOptions' => [
                 'allowClear' => true
             ],
         ]); ?>
 
+        <?= $form->field($model, 'component_ids')
+            ->widget(Select2::classname(), [
+                'data' => ArrayHelper::map(Component::find()->all(), 'id', 'name'),
+                'language' => 'ru',
+                'theme' => Select2::THEME_BOOTSTRAP,
+                'options' => [
+                    'placeholder' => 'Выберите компоненты',
+                    'multiple' => true,
+                    'class' => 'rooms-form-input',
+                ],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]);
+        ?>
+    
+        <?php if($components = $model->components) { ?>
+            <p>Кол-во компонентов:</p>
+            <ul>
+                <?php foreach($components as $component) { ?>
+                    <li><?=$component->name;?>: <input type="number" name="counts[<?=$component->id;?>]" value="<?=$model->getComponentAmount($component->id);?>" style="width: 50px;" /></li>
+                <?php } ?>
+            </ul> 
+        <?php } ?>
+    
         <div class="row">
 
             <div class="col-md-4">

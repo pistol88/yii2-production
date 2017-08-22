@@ -3,6 +3,7 @@ use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 use dvizh\production\models\Category;
+use dvizh\production\models\Template;
 use kartik\select2\Select2;
 
 $productionModel = new $module->productionModel;
@@ -19,7 +20,7 @@ $products = $productionModel::find()->all();
             ->widget(Select2::classname(), [
             'data' => ArrayHelper::map(Category::find()->all(), 'id', 'name'),
             'language' => 'ru',
-            'options' => ['placeholder' => 'Выберите категорию ...'],
+            'options' => ['placeholder' => 'Выберите объект ...'],
             'pluginOptions' => [
                 'allowClear' => true
             ],
@@ -41,12 +42,23 @@ $products = $productionModel::find()->all();
         </div>
 
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <?= $form->field($model, 'category_id')
                     ->widget(Select2::classname(), [
                     'data' => ArrayHelper::map(Category::find()->all(), 'id', 'name'),
                     'language' => 'ru',
                     'options' => ['placeholder' => 'Выберите категорию ...'],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ],
+                ]); ?>
+            </div>
+            <div class="col-md-6">
+                <?= $form->field($model, 'template_id')
+                    ->widget(Select2::classname(), [
+                    'data' => ArrayHelper::map(Template::find()->all(), 'id', 'name'),
+                    'language' => 'ru',
+                    'options' => ['placeholder' => 'Выберите шаблон ...'],
                     'pluginOptions' => [
                         'allowClear' => true
                     ],
