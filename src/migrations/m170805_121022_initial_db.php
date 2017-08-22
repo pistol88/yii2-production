@@ -108,6 +108,14 @@ class m170805_121022_initial_db extends Migration
         $this->addForeignKey(
             'tpl_to_cat', '{{%production_template}}', 'category_id', '{{%production_category}}', 'id', 'CASCADE', 'CASCADE'
         );
+        
+        $this->addForeignKey(
+            'tpl_to_com', '{{%production_template_element}}', 'component_id', '{{%production_component}}', 'id', 'CASCADE', 'CASCADE'
+        );
+        
+        $this->addForeignKey(
+            'prod_to_com', '{{%production_product_element}}', 'component_id', '{{%production_component}}', 'id', 'CASCADE', 'CASCADE'
+        );
     }
     /**
      * @inheritdoc
