@@ -51,3 +51,9 @@ php yii migrate --migrationPath=vendor/dvizh/yii2-production/src/migrations
         //...
     ]
 ```
+
+Использование
+---------------------------------
+Чтобы произвести что-то, нужно вызывать метод produce
+
+yii::$app->production->produce($template); 
