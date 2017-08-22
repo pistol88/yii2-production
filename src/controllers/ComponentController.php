@@ -3,14 +3,14 @@
 namespace dvizh\production\controllers;
 
 use Yii;
-use dvizh\production\models\Template;
-use dvizh\production\models\search\TemplateSearch;
+use dvizh\production\models\Component;
+use dvizh\production\models\search\ComponentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
-class TemplateController extends Controller
+class ComponentController extends Controller
 {
     public function behaviors()
     {
@@ -35,7 +35,7 @@ class TemplateController extends Controller
 
     public function actionIndex()
     {
-        $searchModel = new TemplateSearch();
+        $searchModel = new ComponentSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,15 +46,12 @@ class TemplateController extends Controller
 
     public function actionCreate()
     {
-        $model = new Template;
+        $model = new Component;
 
-        $model->model_name = $this->module->productionModel;
-        
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['update', 'id' => $model->id]);
         } else {
             return $this->render('create', [
-                'module' => $this->module,
                 'model' => $model,
             ]);
         }
@@ -68,7 +65,6 @@ class TemplateController extends Controller
             return $this->redirect(['update', 'id' => $model->id]);
         } else {
             return $this->render('update', [
-                'module' => $this->module,
                 'model' => $model,
             ]);
         }
@@ -83,7 +79,7 @@ class TemplateController extends Controller
 
     protected function findModel($id)
     {
-        $model = new Template;
+        $model = new Component;
         
         if (($model = $model::findOne($id)) !== null) {
             return $model;
@@ -94,7 +90,7 @@ class TemplateController extends Controller
     
     protected function findModelBySlug($slug)
     {
-        $model = new Template;
+        $model = new Component;
         
         if (($model = $model::findOne(['slug' => $slug])) !== null) {
             return $model;

@@ -3,14 +3,14 @@
 namespace dvizh\production\controllers;
 
 use Yii;
-use dvizh\production\models\Template;
-use dvizh\production\models\search\TemplateSearch;
+use dvizh\production\models\TemplateElement;
+use dvizh\production\models\search\TemplateElementSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
-class TemplateController extends Controller
+class ElementController extends Controller
 {
     public function behaviors()
     {
@@ -28,6 +28,7 @@ class TemplateController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
+                    'edittable' => ['post'],
                 ],
             ],
         ];
@@ -35,7 +36,7 @@ class TemplateController extends Controller
 
     public function actionIndex()
     {
-        $searchModel = new TemplateSearch();
+        $searchModel = new TemplateElementSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,7 +47,7 @@ class TemplateController extends Controller
 
     public function actionCreate()
     {
-        $model = new Template;
+        $model = new TemplateElement;
 
         $model->model_name = $this->module->productionModel;
         
@@ -83,7 +84,7 @@ class TemplateController extends Controller
 
     protected function findModel($id)
     {
-        $model = new Template;
+        $model = new TemplateElement;
         
         if (($model = $model::findOne($id)) !== null) {
             return $model;
@@ -94,7 +95,7 @@ class TemplateController extends Controller
     
     protected function findModelBySlug($slug)
     {
-        $model = new Template;
+        $model = new TemplateElement;
         
         if (($model = $model::findOne(['slug' => $slug])) !== null) {
             return $model;

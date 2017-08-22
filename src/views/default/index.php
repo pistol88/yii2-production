@@ -31,10 +31,10 @@ $this->params['breadcrumbs'][] = $this->title;
             </td>
         </tr>
         <tr>
-            <th>Ингредиенты</th>
+            <th>Компоненты</th>
             <td>
-                <a href="<?=Url::toRoute(['template/index']);?>" class="btn btn-default"><i class="glyphicon glyphicon-eye-open" /></i></a>
-                <a href="<?=Url::toRoute(['product/create']);?>" class="btn btn-default"><i class="glyphicon glyphicon-plus" /></i></a>
+                <a href="<?=Url::toRoute(['component/index']);?>" class="btn btn-default"><i class="glyphicon glyphicon-eye-open" /></i></a>
+                <a href="<?=Url::toRoute(['component/create']);?>" class="btn btn-default"><i class="glyphicon glyphicon-plus" /></i></a>
             </td>
         </tr>
     </table>

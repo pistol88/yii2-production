@@ -21,6 +21,17 @@ class m170805_121022_initial_db extends Migration
         );
         
         $this->createTable(
+            '{{%production_component}}',
+            [
+                'id' => Schema::TYPE_PK,
+                'name' => $this->string()->notNull(),
+                'amount' => $this->integer(),
+                'price' => $this->decimal(11, 2),
+            ],
+            $tableOptions
+        );
+        
+        $this->createTable(
             '{{%production_template}}',
             [
                 'id' => Schema::TYPE_PK,

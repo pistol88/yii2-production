@@ -12,7 +12,7 @@ use Yii;
  * @property int $template_id
  * @property int $amount
  *
- * @property ProductionTemplate $template
+ * @property TemplateElement $template
  */
 class TemplateElement extends \yii\db\ActiveRecord
 {
@@ -33,7 +33,7 @@ class TemplateElement extends \yii\db\ActiveRecord
             [['name'], 'required'],
             [['template_id', 'amount'], 'integer'],
             [['name'], 'string', 'max' => 255],
-            [['template_id'], 'exist', 'skipOnError' => true, 'targetClass' => ProductionTemplate::className(), 'targetAttribute' => ['template_id' => 'id']],
+            [['template_id'], 'exist', 'skipOnError' => true, 'targetClass' => Template::className(), 'targetAttribute' => ['template_id' => 'id']],
         ];
     }
 
@@ -46,7 +46,7 @@ class TemplateElement extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Название',
             'template_id' => 'Шаблон',
-            'amount' => 'Количество',
+            'amount' => 'Необходимое количество',
         ];
     }
 

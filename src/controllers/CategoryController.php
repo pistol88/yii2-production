@@ -28,7 +28,6 @@ class CategoryController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
-                    'edittable' => ['post'],
                 ],
             ],
         ];
