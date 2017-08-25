@@ -49,15 +49,14 @@ class TemplateController extends Controller
         $model = new Template;
 
         $model->model_name = $this->module->productionModel;
-        
+        $model->name = "" . rand(0, 99999);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            
             if($componentAmounts = yii::$app->request->post('counts')) {
                 foreach($componentAmounts as $componentId => $count) {
                     $model->setComponentAmount($componentId, $count);
                 }
             }
-            
+
             return $this->redirect(['update', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -72,13 +71,13 @@ class TemplateController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            
+
             if($componentAmounts = yii::$app->request->post('counts')) {
                 foreach($componentAmounts as $componentId => $count) {
                     $model->setComponentAmount($componentId, $count);
                 }
             }
-            
+
             return $this->redirect(['update', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -98,18 +97,18 @@ class TemplateController extends Controller
     protected function findModel($id)
     {
         $model = new Template;
-        
+
         if (($model = $model::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    
+
     protected function findModelBySlug($slug)
     {
         $model = new Template;
-        
+
         if (($model = $model::findOne(['slug' => $slug])) !== null) {
             return $model;
         } else {

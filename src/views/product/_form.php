@@ -18,7 +18,7 @@ $products = $productionModel::find()->all();
 
         <?= $form->field($model, 'model_id')
             ->widget(Select2::classname(), [
-            'data' => ArrayHelper::map(Category::find()->all(), 'id', 'name'),
+            'data' => ArrayHelper::map($products, 'id', 'name'),
             'language' => 'ru',
             'options' => ['placeholder' => 'Выберите объект ...'],
             'pluginOptions' => [
@@ -31,11 +31,11 @@ $products = $productionModel::find()->all();
             <div class="col-md-4">
                 <?= $form->field($model, 'price')->textInput() ?>
             </div>
-            
+
             <div class="col-md-4">
                 <?= $form->field($model, 'sku')->textInput() ?>
             </div>
-            
+
             <div class="col-md-4">
                 <?= $form->field($model, 'code')->textInput() ?>
             </div>

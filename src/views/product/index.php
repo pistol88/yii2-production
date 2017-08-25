@@ -9,7 +9,7 @@ $this->title = 'Продукты';
 $this->params['breadcrumbs'][] = ['label' => 'Производство', 'url' => ['default/index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-\dvizh\shop\assets\BackendAsset::register($this);
+\dvizh\production\assets\BackendAsset::register($this);
 ?>
 <div class="template-index">
     

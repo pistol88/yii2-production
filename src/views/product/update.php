@@ -4,7 +4,7 @@ use yii\helpers\Html;
 $this->title = 'Обновить продукт: ' . ' ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Продукты', 'url' => ['index']];
 $this->params['breadcrumbs'][] = 'Обновить';
-\dvizh\shop\assets\BackendAsset::register($this);
+\dvizh\production\assets\BackendAsset::register($this);
 ?>
 
 <div class="template-update">

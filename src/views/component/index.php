@@ -9,10 +9,10 @@ $this->title = 'Компоненты';
 $this->params['breadcrumbs'][] = ['label' => 'Производство', 'url' => ['default/index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-\dvizh\shop\assets\BackendAsset::register($this);
+\dvizh\production\assets\BackendAsset::register($this);
 ?>
 <div class="category-index">
-    
+
     <div class="row">
         <div class="col-md-2">
             <?= Html::a('Добавить компонент', ['create'], ['class' => 'btn btn-success']) ?>

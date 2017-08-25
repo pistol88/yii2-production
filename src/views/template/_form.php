@@ -18,7 +18,7 @@ $products = $productionModel::find()->all();
 
         <?= $form->field($model, 'model_id')
             ->widget(Select2::classname(), [
-            'data' => ArrayHelper::map(Category::find()->all(), 'id', 'name'),
+            'data' => ArrayHelper::map($products, 'id', 'name'),
             'language' => 'ru',
             'options' => ['placeholder' => 'Выберите объект ...'],
             'pluginOptions' => [
@@ -41,26 +41,26 @@ $products = $productionModel::find()->all();
                 ],
             ]);
         ?>
-    
+
         <?php if($components = $model->components) { ?>
             <p>Кол-во компонентов:</p>
             <ul>
                 <?php foreach($components as $component) { ?>
                     <li><?=$component->name;?>: <input type="number" name="counts[<?=$component->id;?>]" value="<?=$model->getComponentAmount($component->id);?>" style="width: 50px;" /></li>
                 <?php } ?>
-            </ul> 
+            </ul>
         <?php } ?>
-    
+
         <div class="row">
 
             <div class="col-md-4">
                 <?= $form->field($model, 'price')->textInput() ?>
             </div>
-            
+
             <div class="col-md-4">
                 <?= $form->field($model, 'sku')->textInput() ?>
             </div>
-            
+
             <div class="col-md-4">
                 <?= $form->field($model, 'code')->textInput() ?>
             </div>

@@ -13,7 +13,7 @@ class BackendAsset extends AssetBundle
     public $js = [
         //'js/scripts.js',
     ];
-    
+
     public $css = [
         //'css/styles.css',
     ];
