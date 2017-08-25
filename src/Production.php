@@ -7,7 +7,7 @@ use dvizh\production\models\ProductElement;
 
 class Production extends \yii\base\Component
 {   
-    public function produce(Template $template)
+    public function produce($template)
     {
         $product = new Product;
         $product->name = $template->name;
