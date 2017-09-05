@@ -13,7 +13,7 @@ use Yii;
  * @property string $model_name
  * @property int $model_id
  * @property int $amount
- * @property int $production_id
+ * @property int $product_id
  *
  * @property ProductionProduct $production
  */
@@ -33,10 +33,10 @@ class ProductElement extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'amount', 'production_id', 'component_id'], 'integer'],
+            [['name', 'amount', 'product_id', 'component_id'], 'integer'],
             [['price'], 'number'],
             [['product_id'], 'required'],
-            [['production_id'], 'exist', 'skipOnError' => true, 'targetClass' => ProductionProduct::className(), 'targetAttribute' => ['production_id' => 'id']],
+            [['product_id'], 'exist', 'skipOnError' => true, 'targetClass' => Product::className(), 'targetAttribute' => ['product_id' => 'id']],
         ];
     }
 
@@ -58,8 +58,8 @@ class ProductElement extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getProduction()
+    public function getProduct()
     {
-        return $this->hasOne(ProductionProduct::className(), ['id' => 'production_id']);
+        return $this->hasOne(Product::className(), ['id' => 'product_id']);
     }
 }

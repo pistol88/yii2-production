@@ -32,7 +32,7 @@ class Product extends \yii\db\ActiveRecord
             TimestampBehavior::className(),
         ];
     }
-    
+
     /**
      * @inheritdoc
      */
@@ -89,6 +89,6 @@ class Product extends \yii\db\ActiveRecord
      */
     public function getElements()
     {
-        return $this->hasMany(ProductElement::className(), ['production_id' => 'id']);
+        return $this->hasMany(ProductElement::className(), ['product_id' => 'id']);
     }
 }

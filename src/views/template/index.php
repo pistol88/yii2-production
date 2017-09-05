@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 \dvizh\production\assets\BackendAsset::register($this);
 ?>
 <div class="template-index">
-    
+
     <div class="row">
         <div class="col-md-2">
             <?= Html::a('Создать шаблон', ['create'], ['class' => 'btn btn-success']) ?>
@@ -30,7 +30,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
             ['attribute' => 'id', 'filter' => false, 'options' => ['style' => 'width: 55px;']],
             'name',
-            'category.name',
+            [
+                'attribute' =>  'category.name',
+                'label' => 'Категория',
+            ],
             'price',
             ['class' => 'yii\grid\ActionColumn', 'template' => '{update} {delete}']
         ],
