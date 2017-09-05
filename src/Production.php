@@ -21,6 +21,7 @@ class Production extends \yii\base\Component
             $product->model_name = $externalProduct::className();
             $product->model_id = $externalProduct->id;
             $product->template_id = $template->id;
+            $product->category_id = $template->category_id;
             $product->price = $externalProduct->price;
             $product->save();
 

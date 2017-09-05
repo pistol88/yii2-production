@@ -27,17 +27,8 @@ $products = $productionModel::find()->all();
         ]); ?>
 
         <div class="row">
-
             <div class="col-md-4">
                 <?= $form->field($model, 'price')->textInput() ?>
-            </div>
-
-            <div class="col-md-4">
-                <?= $form->field($model, 'sku')->textInput() ?>
-            </div>
-
-            <div class="col-md-4">
-                <?= $form->field($model, 'code')->textInput() ?>
             </div>
         </div>
 

@@ -29,9 +29,20 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => '\kartik\grid\CheckboxColumn'],
             ['class' => 'yii\grid\SerialColumn'],
             ['attribute' => 'id', 'filter' => false, 'options' => ['style' => 'width: 55px;']],
-            'name',
+            [
+                'label' => 'Продукт',
+                'content' => function($model) {
+                    return $model->name;
+                }
+            ],
             [
                 'attribute' =>  'category.name',
+                'filter' => Html::activeDropDownList(
+                    $searchModel,
+                    'category_id',
+                    ArrayHelper::map(Category::find()->all(), 'id', 'name'),
+                    ['class' => 'form-control', 'prompt' => 'Категория']
+                ),
                 'label' => 'Категория',
             ],
             'price',

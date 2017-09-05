@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Url;
 
-$this->title = 'Магазин';
+$this->title = 'Производство';
 $this->params['breadcrumbs'][] = $this->title;
 
 \dvizh\production\assets\BackendAsset::register($this);
@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </td>
         </tr>
         <tr>
-            <th>Продукция</th>
+            <th>Произведенная продукция</th>
             <td>
                 <a href="<?=Url::toRoute(['product/index']);?>" class="btn btn-default"><i class="glyphicon glyphicon-eye-open" /></i></a>
                 <a href="<?=Url::toRoute(['product/create']);?>" class="btn btn-default"><i class="glyphicon glyphicon-plus" /></i></a>

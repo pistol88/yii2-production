@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     
     <div class="row">
         <div class="col-md-2">
-            <?= Html::a('Создать продукт', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('Произвести продукт', ['create'], ['class' => 'btn btn-success']) ?>
         </div>
         <div class="col-md-4">
 
@@ -29,9 +29,23 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => '\kartik\grid\CheckboxColumn'],
             ['class' => 'yii\grid\SerialColumn'],
             ['attribute' => 'id', 'filter' => false, 'options' => ['style' => 'width: 55px;']],
-            'name',
-            'category.name',
+            [
+                'label' => 'Продукт',
+                'content' => function($model) {
+                    return $model->name;
+                }
+            ],
             'price',
+            [
+                'attribute' =>  'category.name',
+                'filter' => Html::activeDropDownList(
+                    $searchModel,
+                    'category_id',
+                    ArrayHelper::map(Category::find()->all(), 'id', 'name'),
+                    ['class' => 'form-control', 'prompt' => 'Категория']
+                ),
+                'label' => 'Категория',
+            ],
             [
                 'attribute' => 'created_at',
                 'content' => function($model) {

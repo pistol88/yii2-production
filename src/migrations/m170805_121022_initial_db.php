@@ -35,7 +35,6 @@ class m170805_121022_initial_db extends Migration
             '{{%production_template}}',
             [
                 'id' => Schema::TYPE_PK,
-                'name' => $this->string()->notNull(),
                 'category_id' => $this->integer(),
                 'model_name' => $this->string(),
                 'model_id' => $this->integer(),
@@ -62,7 +61,6 @@ class m170805_121022_initial_db extends Migration
             '{{%production_product}}',
             [
                 'id' => Schema::TYPE_PK,
-                'name' => $this->integer(),
                 'category_id' => $this->integer(),
                 'status' => $this->integer(),
                 'sku' => $this->string(),

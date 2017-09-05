@@ -49,7 +49,7 @@ class TemplateController extends Controller
         $model = new Template;
 
         $model->model_name = $this->module->productionModel;
-        $model->name = "" . rand(0, 99999);
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if($componentAmounts = yii::$app->request->post('counts')) {
                 foreach($componentAmounts as $componentId => $count) {

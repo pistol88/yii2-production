@@ -44,7 +44,7 @@ class Template extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
+            [['model_name'], 'required'],
             [['category_id', 'model_id'], 'integer'],
             [['price'], 'number'],
             [['component_ids'], 'each', 'rule' => ['integer']],
@@ -61,7 +61,6 @@ class Template extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Название',
             'sku' => 'Внешний код',
             'code' => 'Внутренний код',
             'category_id' => 'Категория',
@@ -72,6 +71,21 @@ class Template extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getName()
+    {
+        if(!$this->model_id) {
+            return null;
+        }
+        
+        if($modelName = $this->model_name) {
+            if($product = $modelName::findOne($this->model_id)) {
+                return $product->name;
+            }
+        }
+        
+        return null;
+    }
+    
     /**
      * @return \yii\db\ActiveQuery
      */
