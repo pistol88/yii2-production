@@ -17,7 +17,6 @@ class Production extends \yii\base\Component
 
         for($i = 1; $i <= $count; $i++) {
             $product = new Product;
-            $product->name = $externalProduct->name;
             $product->model_name = $externalProduct::className();
             $product->model_id = $externalProduct->id;
             $product->template_id = $template->id;
