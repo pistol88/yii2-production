@@ -85,8 +85,6 @@ class m170805_121022_initial_db extends Migration
                 'name' => $this->string(),
                 'component_id' => $this->integer(),
                 'price' => $this->decimal(11, 2),
-                'model_name' => $this->string(),
-                'model_id' => $this->integer(),
                 'amount' => $this->integer(),
                 'product_id' => $this->integer()->notNull(),
             ],
